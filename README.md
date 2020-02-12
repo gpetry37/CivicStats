@@ -1,6 +1,6 @@
 # CivicStats
 
-#### A tool for users to access detailed data on sustainability in their area.
+#### A tool for users to visualize statistics on sustainability in their area.
 
 | Name	            | TCNJ Email        | GitHub ID  | Phone #        |
 | ----------------- | ----------------- | ---------- | -------------- |
