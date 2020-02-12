@@ -1,8 +1,6 @@
 # Sustainability-Data-Visualization-Tool
 
-#### Team Name: CSC315 - 01 Group 4
-
-#### Project Name: Sustainability Data Visualization Tool
+#### A tool for users to access detailed data on sustainability in their area.
 
 | Name	            | TCNJ Email        | GitHub ID  | Phone #        |
 | ----------------- | ----------------- | ---------- | -------------- |
@@ -15,8 +13,24 @@
 
 ## Documents
 
+#### Stage I - Team Formation
+ * [Team Formation](https://github.com/gpetry37/Sustainability-Data-Visualization-Tool/blob/master/docs/stage-i/TeamFormation.docx)
+#### *Stage II - Project Proposal and Specifications*
+ * Project Proposal and Specifications
+ * Quad Chart
+#### Stage III - Database Model
 
+#### Stage IV - Design
+
+#### Stage V - Implementation
+
+#### Stage VI - Handover
+
+#### Stage VII - Final Project Report and Reflections
 
 ## Useful Links
 
-Sustainability Institute - https://si.tcnj.edu/
+[Sustainability Institute](https://si.tcnj.edu/)
+
+[Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
