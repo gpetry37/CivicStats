@@ -33,3 +33,5 @@
 [Sustainability Institute](https://si.tcnj.edu/)
 
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+[GitHub Desktop Download](https://desktop.github.com/)
