@@ -1,4 +1,4 @@
-# Sustainability Data Visualization Tool
+# CivicStats
 
 #### A tool for users to access detailed data on sustainability in their area.
 
