@@ -1,4 +1,4 @@
-# Sustainability-Data-Visualization-Tool
+# Sustainability Data Visualization Tool
 
 #### A tool for users to access detailed data on sustainability in their area.
 
