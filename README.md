@@ -14,10 +14,10 @@
 ## Documents
 
 #### Stage I - Team Formation
- * [Team Formation](https://github.com/gpetry37/Sustainability-Data-Visualization-Tool/blob/master/docs/stage-i/TeamFormation.docx)
+ * [Team Formation](https://github.com/gpetry37/Sustainability-Data-Visualization-Tool/blob/master/docs/stage-i/TeamFormation.pdf)
 #### *Stage II - Project Proposal and Specifications*
- * Project Proposal and Specifications
- * Quad Chart
+ * [Project Proposal and Specifications](https://github.com/gpetry37/CivicStats/blob/master/docs/stage-ii/Project%20Proposal%20Pitch%20and%20Specifications.pdf)
+ * [Quad Chart](https://github.com/gpetry37/CivicStats/blob/master/docs/stage-ii/CivicStats_Quad_Chart.pdf)
 #### Stage III - Database Model
 
 #### Stage IV - Design
