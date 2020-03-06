@@ -35,3 +35,5 @@
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 [GitHub Desktop Download](https://desktop.github.com/)
+
+[Community List](http://www.sustainablejersey.com/fileadmin/media/Homepage/Final_11_X_17_SJ_Communities_Poster.pdf)
