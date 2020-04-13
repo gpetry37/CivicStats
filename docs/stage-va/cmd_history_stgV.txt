@@ -1,0 +1,89 @@
+
+SELECT * FROM Counties
+;
+SELECT * FROM Counties
+;
+SELECT * FROM Municipalities;
+SELECT * FROM Certification;
+SELECT * FROM Action;
+SELECT * FROM Actions;
+SELECT * FROM Categories;
+\q
+\i view_test.sql
+\i create_views.sql
+< view_test.sql 
+;
+\q
+SELECT * FROM non_completed_actions;
+SELECT * FROM not_completed_actions;
+\q
+SELECT * FROM Categories;
+\q
+SELECT * FROM Categories;
+\q
+SELECT * FROM Counties;
+\q
+SELECT * FROM Actions;
+\q
+SELECT * FROM Actions;
+\q
+SELECT * FROM Municipalities;
+\q
+SELECT * FROM Certification;
+\q
+SELECT * FROM tot_cat_cty;
+SELECT * FROM Counties;
+SELECT * FROM tot_pts_cty;
+SELECT * FROM pt_tot_category;
+SELECT * FROM tot_act_mun;
+SELECT * FROM tot_pts_mun;
+SELECT * FROM tot_cat_mun;
+SELECT * FROM tot_act_cty;
+SELECT * FROM tot_pts_cty;
+SELECT * FROM tot_cat_cty;
+SELECT * FROM no_gold_stars;
+SELECT * FROM many_gold_stars;
+SELECT * FROM bronze_stars;
+SELECT * FROM silver_stars;
+SELECT * FROM no_priority;
+SELECT * FROM yes_priority;
+SELECT * FROM no_required;
+SELECT * FROM yes_required;
+SELECT * FROM small_pt_act;
+SELECT * FROM yes_priority
+;
+SELECT * FROM large_pt_act;
+SELECT * FROM pt_tot_act;
+SELECT * FROM not_completed_actions;
+\s
+\s code.txt
+\q
+SELECT * FROM Complete_Actions;
+\q
+SELECT * FROM Counties;
+SELECT * FROM Categories;
+SELECT * FROM Municipalities;
+SELECT * FROM Certification;
+SELECT * FROM Actions;
+SELECT * FROM Complete_Actions;
+SELECT * FROM pt_tot_category;
+SELECT * FROM tot_act_mun;
+SELECT * FROM tot_pts_mun;
+SELECT * FROM tot_cat_mun;
+SELECT * FROM tot_act_cty;
+SELECT * FROM tot_pts_cty;
+SELECT * FROM tot_cat_cty;
+SELECT * FROM no_gold_stars;
+SELECT * FROM many_gold_stars;
+SELECT * FROM bronze_stars;
+SELECT * FROM silver_stars;
+SELECT * FROM no_priority;
+SELECT * FROM yes_priority;
+SELECT * FROM no_required;
+SELECT * FROM yes_required;
+SELECT * FROM small_pt_act;
+SELECT * FROM large_pt_act;
+SELECT * FROM pt_tot_act;
+SELECT * FROM not_completed_actions;
+\q
+\s cmd_history_stgV.txt
