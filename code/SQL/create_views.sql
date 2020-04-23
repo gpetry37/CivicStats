@@ -4,46 +4,65 @@
  * create_views.sql
  */
 
-
+/*Good?*/
 CREATE VIEW pt_tot_category AS
-SELECT Ccode, SUM(DISTINCT Point_Value)
-FROM Actions
-GROUP BY Ccode;
+SELECT C.Cname, SUM(A.Point_Value)
+FROM Actions AS A JOIN Categories AS C
+ON A.Ccode = C.Ccode
+GROUP BY C.Cname;
 
+/*Good*/
 CREATE VIEW tot_act_mun AS
-SELECT Mcode, COUNT(Acode)
-FROM Complete_Actions
-GROUP BY Mcode;
+SELECT M.Mname, COUNT(CA.Acode)
+FROM Complete_Actions AS CA JOIN Municipalities AS M
+ON CA.Mcode = M.Mcode
+GROUP BY M.Mname;
 
+/*Good*/
 CREATE VIEW tot_pts_mun AS
-SELECT Mcode, Total_Points
-FROM Certification;
+SELECT M.Mname, C.Total_Points
+FROM Certification AS C JOIN Municipalities AS M
+ON C.Mcode = M.Mcode;
 
+/*Good*/
 CREATE VIEW tot_cat_mun AS
-SELECT Mcode, COUNT(DISTINCT Ccode)
-FROM Complete_Actions JOIN Actions
-ON Complete_Actions.Acode = Actions.Acode
-GROUP BY Mcode;
+SELECT M.Mname, COUNT(DISTINCT A.Ccode)
+FROM Complete_Actions AS CA JOIN Actions A
+ON CA.Acode = A.Acode
+JOIN Municipalities AS M
+ON CA.Mcode = M.Mcode
+GROUP BY M.Mname;
 
+/*Good*/
 CREATE VIEW tot_act_cty AS
-SELECT CTYcode, COUNT(Acode)
-FROM Municipalities JOIN Complete_Actions
-ON Municipalities.Mcode = Complete_Actions.Mcode
-GROUP BY CTYcode;
+SELECT C.CTYname, COUNT(CA.Acode)
+FROM Municipalities AS M JOIN Complete_Actions AS CA
+ON M.Mcode = CA.Mcode
+JOIN Counties AS C
+ON C.CTYcode = M.CTYcode
+GROUP BY C.CTYname;
 
+/*Good*/
 CREATE VIEW tot_pts_cty AS
-SELECT CTYcode, Total_Points
-FROM Municipalities JOIN Certification
-ON Municipalities.Mcode = Certification.Mcode
-GROUP BY CTYcode, Total_Points;
+SELECT CY.CTYname, C.Total_Points
+FROM Municipalities AS M JOIN Certification AS C
+ON M.Mcode = C.Mcode
+JOIN Counties as CY
+ON CY.CTYcode = M.CTYcode
+GROUP BY CY.CTYname, C.Total_Points;
 
+/*Good*/
 CREATE VIEW tot_cat_cty AS
-SELECT CTYcode, COUNT(DISTINCT Ccode)
-FROM Municipalities JOIN Complete_Actions
-ON Municipalities.Mcode = Complete_Actions.Mcode
-JOIN Actions
-ON Complete_Actions.Acode = Actions.Acode
-GROUP BY CTYcode;
+SELECT CY.CTYname, COUNT(DISTINCT A.Ccode)
+FROM Municipalities AS M JOIN Complete_Actions AS CA
+ON M.Mcode = CA.Mcode
+JOIN Actions A
+ON CA.Acode = A.Acode
+JOIN Counties as CY
+ON CY.CTYcode = M.CTYcode
+GROUP BY CY.CTYname;
+
+/*-----------------------------------*/
 
 CREATE VIEW no_gold_stars AS
 SELECT Mcode, Num_Gold_Stars
