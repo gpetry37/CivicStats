@@ -1,0 +1,17 @@
+# FOR USE:
+# Creates and inserts all data into postgres db civstat
+# Ensure that all sql files are in a child directory sql
+
+# In Ubuntu VM:
+# . initialize_db.txt
+
+dropdb civstat
+createdb civstat
+psql -f sql/create_tables.sql civstat
+psql -f sql/create_views.sql civstat
+psql -f sql/insert_county.sql civstat
+psql -f sql/insert_category.sql civstat
+psql -f sql/insert_municipality.sql civstat
+psql -f sql/insert_certification.sql civstat
+psql -f sql/insert_action.sql civstat
+psql -f sql/insert_complete_action.sql civstat
