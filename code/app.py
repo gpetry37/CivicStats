@@ -97,8 +97,9 @@ app = Flask(__name__)
 
 # serve form web page
 @app.route("/")
+@app.rout("home")
 def form():
-    return render_template('my-form.html')
+    return render_template('home.html')
 
 # example page
 @app.route("/bar")
