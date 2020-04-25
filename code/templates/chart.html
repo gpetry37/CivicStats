@@ -1,15 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>{{ title }}</title>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
-</head>
-
-<body> -->
 <div class="drop-downs">
   <h3>{{ label_type }}</h3>
   <form action="{{ label_type.lower() }}" method="post">
@@ -75,7 +66,5 @@
 
     </script>
   </center>
-<!-- </body>
-</html> -->
 
 {% endblock content %}
