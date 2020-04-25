@@ -2,7 +2,7 @@ INSERT INTO Actions (Ccode, Aname, Point_Value, Priority, Required)
 VALUES ('1', 'Animals in the Community Education', 10, '0', '0'),
 ('1', 'Companion Animal Management Pledge', 5, '0', '0'),
 ('1', 'Companion Animal Management Plan', 10, '0', '0'),
-('1', 'Enhanced Licensing Compliancem', 5, '0', '0'),
+('1', 'Enhanced Licensing Compliance', 5, '0', '0'),
 ('1', 'Pledge Supporting NJ Wildlife Action Plan', 10, '0', '0'),
 ('1', 'Wildlife Interaction Plan', 10, '0', '0'),
 ('2', 'Establish a Creative Team', 10, '0', '0'),

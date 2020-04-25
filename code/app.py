@@ -216,7 +216,7 @@ def handle_data_c():
             max_value=210
         elif val == "no_priority_cat":
             label_query="SELECT cname FROM " + val + " WHERE cname=\'" + labels[0] + "\'"
-            value_query='SELECT Total_NonPriority_Actions FROM ' + val + ' WHERE cname=\"' + labels[0] + '\"'
+            value_query='SELECT Total_NonPriority_Actions FROM ' + val + " WHERE cname=\'" + labels[0] + "\'"
             title_='Total Non-Priority Actions in ' + labels[0]
             max_value=18
         elif val == "yes_priority_cat":
@@ -261,7 +261,7 @@ def handle_data_c():
             label = list.pop(0)
             label_query="SELECT cname FROM " + val + " WHERE cname IN (\'" + label + "\'"
             value_query="SELECT Total_NonPriority_Actions FROM " + val + " WHERE cname IN (\'" + label + "\'"
-            title_='Total Points in ' + label
+            title_='Total Non-Priority Actions in ' + label
             while list:
                 label = list.pop(0)
                 label_query+= ", \'" + label + "\'"
@@ -275,7 +275,7 @@ def handle_data_c():
             label = list.pop(0)
             label_query="SELECT cname FROM " + val + " WHERE cname IN (\'" + label + "\'"
             value_query="SELECT Total_Priority_Actions FROM " + val + " WHERE cname IN (\'" + label + "\'"
-            title_='Total Points in ' + label
+            title_='Total Priority Actions in ' + label
             while list:
                 label = list.pop(0)
                 label_query+= ", \'" + label + "\'"
@@ -289,7 +289,7 @@ def handle_data_c():
             label = list.pop(0)
             label_query="SELECT cname FROM " + val + " WHERE cname IN (\'" + label + "\'"
             value_query="SELECT total_nonrequired_actions FROM " + val + " WHERE cname IN (\'" + label + "\'"
-            title_='Total Points in ' + label
+            title_='Total Non-Required Actions in ' + label
             while list:
                 label = list.pop(0)
                 label_query+= ", \'" + label + "\'"
@@ -303,7 +303,7 @@ def handle_data_c():
             label = list.pop(0)
             label_query="SELECT cname FROM " + val + " WHERE cname IN (\'" + label + "\'"
             value_query="SELECT Total_required_Actions FROM " + val + " WHERE cname IN (\'" + label + "\'"
-            title_='Total Points in ' + label
+            title_='Total Required Actions in ' + label
             while list:
                 label = list.pop(0)
                 label_query+= ", \'" + label + "\'"
@@ -415,7 +415,7 @@ def handle_data_cty():
             max_value=90
         elif val == "tot_pts_cty":
             label_query="SELECT ctyname FROM " + val + " WHERE ctyname=\'" + labels[0] + "\'"
-            value_query='SELECT total_points FROM ' + val + ' WHERE ctyname=\"' + labels[0] + '\"'
+            value_query='SELECT total_points FROM ' + val + " WHERE ctyname=\'" + labels[0] + "\'"
             title_='Total Points in ' + labels[0]
             max_value=850
         elif val == "tot_cat_cty":
@@ -600,7 +600,7 @@ def handle_data_m():
             max_value=50
         elif val == "tot_pts_mun":
             label_query="SELECT mname FROM " + val + " WHERE mname=\'" + labels[0] + "\'"
-            value_query='SELECT total_points FROM ' + val + ' WHERE mname=\"' + labels[0] + '\"'
+            value_query='SELECT total_points FROM ' + val + " WHERE mname=\'" + labels[0] + "\'"
             title_='Total Points in ' + labels[0]
             max_value=550
         elif val == "tot_cat_mun":
