@@ -11,7 +11,7 @@ sudo apt-get update
 sudo apt-get install postgres-psycopg2
 
 # The above commands may not work. Try running these instead:
-sudo apt-get install python3 python-dev python3-dev
+sudo apt-get install python3 libpq-dev python-dev python3-dev
 pip install psycopg2
 
 # set the postgreSQL password for user 'osc'
