@@ -9,7 +9,7 @@ CREATE VIEW pt_tot_category AS
 SELECT C.Cname, SUM(A.Point_Value) AS Total_Points
 FROM Actions AS A JOIN Categories AS C
 ON A.Ccode = C.Ccode
-GROUP BY C.Cname
+GROUP BY C.CCode
 ORDER BY C.Cname;
 
 /*Shows the total points for each action*/
@@ -24,7 +24,7 @@ CREATE VIEW tot_act_mun AS
 SELECT M.Mname, COUNT(CA.Acode) AS Count_Action
 FROM Complete_Actions AS CA JOIN Municipalities AS M
 ON CA.Mcode = M.Mcode
-GROUP BY M.Mname
+GROUP BY M.Mcode
 ORDER BY M.Mname;
 
 /*Shows the total points each municipality received*/
@@ -41,7 +41,7 @@ FROM Complete_Actions AS CA JOIN Actions A
 ON CA.Acode = A.Acode
 JOIN Municipalities AS M
 ON CA.Mcode = M.Mcode
-GROUP BY M.Mname
+GROUP BY M.Mcode
 ORDER BY M.Mname;
 
 /*Shows the total number of actions each county did*/
@@ -88,15 +88,16 @@ WHERE Bronze_Silver = 'Bronze'
 GROUP BY CY.CTYname
 ORDER BY CY.CTYname;
 
-/*Shows count silver stars per county. Does not return county names if no silver.*/
+/*Shows count silver stars per county.*/
 CREATE VIEW silver_stars_cty AS
-SELECT CY.CTYname, COUNT(C.Bronze_Silver) AS Total_Silver
+SELECT CY.CTYname, COUNT(
+	CASE C.Bronze_Silver WHEN 'Silver' 
+	THEN 1 ELSE NULL END) AS Total_Silver
 FROM Certification AS C 
-RIGHT JOIN Municipalities AS M
+JOIN Municipalities AS M
 ON M.Mcode = C.Mcode
-RIGHT JOIN Counties AS CY
+JOIN Counties AS CY
 ON CY.CTYcode = M.CTYcode
-WHERE Bronze_Silver = 'Silver'
 GROUP BY CY.CTYname
 ORDER BY CY.CTYname;
 
@@ -111,10 +112,11 @@ ORDER BY Cname;
 
 /*Shows the number of priority actions per category*/
 CREATE VIEW yes_priority_cat AS
-SELECT C.Cname, COUNT(A.Priority) AS Total_Priority_Actions
+SELECT C.Cname, COUNT(
+	CASE WHEN A.Priority IS True 
+	THEN 1 ELSE NULL END) AS Total_Priority_Actions
 FROM Actions AS A JOIN Categories AS C
 ON C.Ccode = A.Ccode
-WHERE Priority IS True
 GROUP BY Cname
 ORDER BY Cname;
 
@@ -129,13 +131,13 @@ ORDER BY Cname;
 
 /*Shows the number of required actions per category*/
 CREATE VIEW yes_required_cat AS
-SELECT C.Cname, COUNT(A.Required) AS Total_Required_Actions
+SELECT C.Cname, COUNT(
+	CASE WHEN A.Required IS True 
+	THEN 1 ELSE NULL END) AS Total_Required_Actions
 FROM Actions AS A JOIN Categories AS C
 ON C.Ccode = A.Ccode
-WHERE Required IS True
 GROUP BY Cname
 ORDER BY Cname;
-
 
 /*CUT VIEWS*/
 
