@@ -1,7 +1,7 @@
 /*Gordon Petry, Michael Williams, Jason Kantner and Casey Lishko
  * Database Systems
  * 4/11/20
- * create_views.sql
+ * create_views.sql 
  */
 
 /*The below query is used to delete information from specified tables.
@@ -10,7 +10,7 @@ DELETE
 FROM table_name
 WHERE attribute = ...; */
 
-DELETE 
+DELETE
 FROM Counties
 WHERE CTYcode = '2';
 
@@ -18,7 +18,7 @@ WHERE CTYcode = '2';
 /*The below query is used to update information from specified tables.
 UPDATE table_name
 SET attribute = ...
-WHERE original_attribute = 
+WHERE original_attribute =
 */
 
 UPDATE Categories
@@ -30,24 +30,24 @@ WHERE Ccode = '1';
 
 /*USED FOR X AXIS*/
 SELECT Cname
-FROM CATEGORIES 
+FROM CATEGORIES
 WHERE Cname = 'Energy' AND Cname = 'Food';
 
 /*Gets sum of points for a specific category in a specific municipality*/
 SELECT SUM(Point_Value)
 FROM MUNICIPALITIES JOIN COMPLETE_ACTIONS
 ON MUNICIPALITIES.Mcode = COMPLETE_ACTIONS.Mcode
-JOIN ACTIONS 
+JOIN ACTIONS
 ON COMPLETE_ACTIONS.Acode = ACTIONS.Acode
 JOIN CATEGORIES
 ON ACTIONS.Ccode = CATEGORIES.Ccode
 WHERE Mname = 'Atlantic City' AND Cname = 'Food';
-  
+
 /*Gets count of priority actions for a specific category in a specific municipality*/
 SELECT COUNT(Priority)
 FROM MUNICIPALITIES JOIN COMPLETE_ACTIONS
 ON MUNICIPALITIES.Mcode = COMPLETE_ACTIONS.Mcode
-JOIN ACTIONS 
+JOIN ACTIONS
 ON COMPLETE_ACTIONS.Acode = ACTIONS.Acode
 JOIN CATEGORIES
 ON ACTIONS.Ccode = CATEGORIES.Ccode
@@ -57,12 +57,12 @@ WHERE Mname = 'Atlantic City' AND Cname = 'Food';
 SELECT COUNT(Required)
 FROM MUNICIPALITIES JOIN COMPLETE_ACTIONS
 ON MUNICIPALITIES.Mcode = COMPLETE_ACTIONS.Mcode
-JOIN ACTIONS 
+JOIN ACTIONS
 ON COMPLETE_ACTIONS.Acode = ACTIONS.Acode
 JOIN CATEGORIES
 ON ACTIONS.Ccode = CATEGORIES.Ccode
 WHERE Mname = 'Atlantic City' AND Cname = 'Food';
-   
+
 /*The following is used for comparing multiple municipalities*/
 
 /*USED FOR X AXIS*/
@@ -112,7 +112,7 @@ WHERE CY.CTYname = 'Burlington';
 
 /*Select total points from a specific county*/
 SELECT SUM(Total_Points)
-FROM COUNTIES JOIN MUNICIPALITIES 
+FROM COUNTIES JOIN MUNICIPALITIES
 ON COUNTIES.CTYcode = MUNICIPALITIES.CTYcode
 JOIN CERTIFICATION
 ON MUNICIPALITIES.Mcode = CERTIFICATION.Mcode
@@ -141,5 +141,3 @@ ON CY.CTYcode = M.CTYcode
 JOIN CERTIFICATION AS C
 ON M.Mcode = C.Mcode
 WHERE CY.CTYname = 'Union' AND C.Bronze_Silver = 'Silver';
-
-
