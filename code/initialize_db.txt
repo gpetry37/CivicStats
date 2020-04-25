@@ -7,11 +7,11 @@
 
 dropdb civstat
 createdb civstat
-psql -f sql/create_tables.sql civstat
-psql -f sql/create_views.sql civstat
-psql -f sql/insert_county.sql civstat
-psql -f sql/insert_category.sql civstat
-psql -f sql/insert_municipality.sql civstat
-psql -f sql/insert_certification.sql civstat
-psql -f sql/insert_action.sql civstat
-psql -f sql/insert_complete_action.sql civstat
+psql -f SQL/create_tables.sql civstat
+psql -f SQL/create_views.sql civstat
+psql -f SQL/insert_county.sql civstat
+psql -f SQL/insert_category.sql civstat
+psql -f SQL/insert_municipality.sql civstat
+psql -f SQL/insert_certification.sql civstat
+psql -f SQL/insert_action.sql civstat
+psql -f SQL/insert_complete_action.sql civstat
