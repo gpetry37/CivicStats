@@ -19,8 +19,8 @@ pip install psycopg2
 
 #### Set the PostgreSQL password for user 'osc'
 sudo -u postgres psql  
-...ALTER USER osc PASSWORD 'osc';  
-...\q
+   ALTER USER osc PASSWORD 'osc';  
+   \q
 
 #### Install Flask
 sudo apt-get install python-pip  
