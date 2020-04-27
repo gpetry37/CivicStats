@@ -10,7 +10,7 @@ a bar graph.
 ### To run this program in the CSC 315 VM you first need to make the following one-time configuration changes:
 
 #### Install Psycopg2 Python Package
-`sudo apt-get update`
+`sudo apt-get update`  
 `sudo apt-get install postgres-psycopg2`
 
 #### The above commands may not work. Try running these instead:
