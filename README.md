@@ -1,32 +1,36 @@
-# CivicStats
+# To run this program in the CSC 315 VM you first need to make the following one-time configuration changes:
+## install psycopg2 python package
+sudo apt-get update
+sudo apt-get install postgres-psycopg2
+## The above commands may not work. Try running these instead:
+sudo apt-get install python3 libpq-dev python-dev python3-dev
+pip install psycopg2
+# set the postgreSQL password for user 'osc'
+sudo -u postgres psql
+...ALTER USER osc PASSWORD 'osc';
+...\q
+## install flask
+sudo apt-get install python-pip
+pip install flask
+## logout, then login again to inherit new shell environment
+## initialize database
+. initialize_db.txt
 
-#### A tool for users to visualize statistics on sustainability in their area.
-
-| Name	            | TCNJ Email        | GitHub ID  | Phone #        |
-| ----------------- | ----------------- | ---------- | -------------- |
-| Gordon Petry	    | petryg2@tcnj.edu	| gpetry37	 | (732) 966-3000 |
-| Michael Williams	| willim48@tcnj.edu	| mikeacycle | (732) 678-7821 |
-| Jason Kantner	    | kantnej2@tcnj.edu	| jmkantner9 | (856) 701-3027 |
-| Casey Lishko	    | lishkom1@tcnj.edu	| WaterCasey | (201) 468-1881 |
-| Yanaja Joyner	    | Joynery1@tcnj.edu	| YanajaJ	   | (848) 241-4573 |
-| Len La Rocca	    | Laroccl2@tcnj.edu	|	           | (732) 804-0257 |
-
-## Documents
-
-#### Stage I - Team Formation
- * [Team Formation](https://github.com/gpetry37/Sustainability-Data-Visualization-Tool/blob/master/docs/stage-i/TeamFormation.pdf)
-#### *Stage II - Project Proposal and Specifications*
- * [Project Proposal and Specifications](https://github.com/gpetry37/CivicStats/blob/master/docs/stage-ii/Project%20Proposal%20Pitch%20and%20Specifications.pdf)
- * [Quad Chart](https://github.com/gpetry37/CivicStats/blob/master/docs/stage-ii/CivicStats_Quad_Chart.pdf)
-#### Stage III - Database Model
-
-#### Stage IV - Design
-
-#### Stage V - Implementation
-
-#### Stage VI - Handover
-
-#### Stage VII - Final Project Report and Reflections
+# CSC 315 Project
+# Group 4 - CivicStats
+# Gordon Petry, Jason Kantner, Michael Williams, Casey Lishko
+### Usage Debug Mode Off:
+export FLASK_APP=app.py
+flask run
+#### then browse to http://127.0.0.1:5000/
+### Usage Debug Mode On:
+python app.py
+#### then browse to http://127.0.0.1:5000/
+## Purpose:
+Utilizing data pulled from sustainablejersey.com, this
+program will allow to user to look at data between different
+counties, municipalities, counties and actions plotted on
+a bar graph.
 
 ## Useful Links
 
