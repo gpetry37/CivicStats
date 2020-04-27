@@ -1,5 +1,5 @@
 # CSC 315 Group 4 - CivicStats
-# Gordon Petry, Jason Kantner, Michael Williams, Casey Lishko
+### Gordon Petry, Jason Kantner, Michael Williams, Casey Lishko
 
 ## To run this program in the CSC 315 VM you first need to make the following one-time configuration changes:
 
