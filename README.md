@@ -37,11 +37,11 @@ a bar graph.
 #### Usage Debug Mode Off:
 `export FLASK_APP=app.py`  
 `flask run`
-##### then browse to http://127.0.0.1:5000/
+##### Then browse to http://127.0.0.1:5000/
 
 #### Usage Debug Mode On:
 `python app.py`
-##### then browse to http://127.0.0.1:5000/
+##### Then browse to http://127.0.0.1:5000/
 
 ### Database Source
 
