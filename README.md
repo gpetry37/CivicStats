@@ -10,35 +10,35 @@ a bar graph.
 ### To run this program in the CSC 315 VM you first need to make the following one-time configuration changes:
 
 #### Install Psycopg2 Python Package
-sudo apt-get update  
-sudo apt-get install postgres-psycopg2
+`sudo apt-get update`
+`sudo apt-get install postgres-psycopg2`
 
 #### The above commands may not work. Try running these instead:
-sudo apt-get install python3 libpq-dev python-dev python3-dev  
-pip install psycopg2
+`sudo apt-get install python3 libpq-dev python-dev python3-dev`  
+`pip install psycopg2`
 
 #### Set the PostgreSQL password for user 'osc'
-sudo -u postgres psql  
+`sudo -u postgres psql`  
 
-   ALTER USER osc PASSWORD 'osc';  
-   \q
+   `ALTER USER osc PASSWORD 'osc';`  
+   `\q`
 
 #### Install Flask
-sudo apt-get install python-pip  
-pip install flask
+`sudo apt-get install python-pip`  
+`pip install flask`
 
 #### Initialize Database
-. initialize_db.txt
+`. initialize_db.txt`
 
 #### Logout, then login again to inherit new shell environment
 
 #### Usage Debug Mode Off:
-export FLASK_APP=app.py  
-flask run
+`export FLASK_APP=app.py`  
+`flask run`
 ##### then browse to http://127.0.0.1:5000/
 
 #### Usage Debug Mode On:
-python app.py
+`python app.py`
 ##### then browse to http://127.0.0.1:5000/
 
 ### Database Source
