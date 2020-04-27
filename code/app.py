@@ -143,12 +143,13 @@ def categories():
 
     # sets value options for y-axis drop down
     v1 = ValOption("pt_tot_category", "Total Points")
-    v2 = ValOption("no_priority_cat", "NonPriority Actions")
-    v3 = ValOption("yes_priority_cat", "Priority Actions")
-    v4 = ValOption("no_required_cat", "NonRequired Actions")
-    v5 = ValOption("yes_required_cat", "Required Actions")
-    val_choices = [v1, v2, v3, v4, v5]
-    return render_template('chart.html', label_type=label_type, label_choices=label_choices, val_choices=val_choices)
+    v2 = ValOption("tot_act_cat", "Total Actions")
+    v3 = ValOption("no_priority_cat", "NonPriority Actions")
+    v4 = ValOption("yes_priority_cat", "Priority Actions")
+    v5 = ValOption("no_required_cat", "NonRequired Actions")
+    v6 = ValOption("yes_required_cat", "Required Actions")
+    val_choices = [v1, v2, v3, v4, v5, v6]
+    return render_template('drop-down.html', label_type=label_type, label_choices=label_choices, val_choices=val_choices)
 
 # loads categories page with bar chart
 @app.route('/categories', methods=['POST'])
@@ -164,11 +165,12 @@ def handle_data_c():
 
     # sets value options for drop down
     v1 = ValOption("pt_tot_category", "Total Points")
-    v2 = ValOption("no_priority_cat", "NonPriority Actions")
-    v3 = ValOption("yes_priority_cat", "Priority Actions")
-    v4 = ValOption("no_required_cat", "NonRequired Actions")
-    v5 = ValOption("yes_required_cat", "Required Actions")
-    val_choices = [v1, v2, v3, v4, v5]
+    v2 = ValOption("tot_act_cat", "Total Actions")
+    v3 = ValOption("no_priority_cat", "NonPriority Actions")
+    v4 = ValOption("yes_priority_cat", "Priority Actions")
+    v5 = ValOption("no_required_cat", "NonRequired Actions")
+    v6 = ValOption("yes_required_cat", "Required Actions")
+    val_choices = [v1, v2, v3, v4, v5, v6]
 
     # gets drop down selection from form
     labels = request.form.getlist('label')
@@ -181,6 +183,11 @@ def handle_data_c():
             value_query='SELECT total_points FROM ' + val
             title_='Total Points per Category'
             max_value=210
+        elif val == "tot_act_cat":
+            label_query='SELECT cname FROM ' + val
+            value_query='SELECT count_action FROM ' + val
+            title_='Total Actions per Category'
+            max_value=20
         elif val == "no_priority_cat":
             label_query='SELECT cname FROM ' + val
             value_query='SELECT Total_NonPriority_Actions FROM ' + val
@@ -214,6 +221,11 @@ def handle_data_c():
             value_query="SELECT total_points FROM " + val + " WHERE cname=\'" + labels[0] + "\'"
             title_='Total Points in ' + labels[0]
             max_value=210
+        elif val == "tot_act_cat":
+            label_query='SELECT cname FROM ' + val + " WHERE cname=\'" + labels[0] + "\'"
+            value_query='SELECT count_action FROM ' + val + " WHERE cname=\'" + labels[0] + "\'"
+            title_='Total Actions in ' + labels[0]
+            max_value=20
         elif val == "no_priority_cat":
             label_query="SELECT cname FROM " + val + " WHERE cname=\'" + labels[0] + "\'"
             value_query='SELECT Total_NonPriority_Actions FROM ' + val + " WHERE cname=\'" + labels[0] + "\'"
@@ -256,6 +268,18 @@ def handle_data_c():
             label_query+= ");"
             value_query+= ");"
             max_value=210
+        elif val == "tot_act_cat":
+            label_query='SELECT cname FROM ' + val + " WHERE cname=\'" + label + "\'"
+            value_query='SELECT count_action FROM ' + val + " WHERE cname=\'" + label + "\'"
+            title_='Total Actions in ' + label
+            while list:
+                label = list.pop(0)
+                label_query+= ", \'" + label + "\'"
+                value_query+= ", \'" + label + "\'"
+                title_+= " and " + label
+            label_query+= ");"
+            value_query+= ");"
+            max_value=20
         elif val == "no_priority_cat":
             list = labels
             label = list.pop(0)
@@ -347,7 +371,7 @@ def counties():
     v4 = ValOption("bronze_stars_cty", "Total Bronze")
     v5 = ValOption("silver_stars_cty", "Total Silver")
     val_choices = [v1, v2, v3, v4, v5]
-    return render_template('chart.html', label_type=label_type, label_choices=label_choices, val_choices=val_choices)
+    return render_template('drop-down.html', label_type=label_type, label_choices=label_choices, val_choices=val_choices)
 
 # loads counties page with bar chart
 @app.route('/counties', methods=['POST'])
@@ -544,7 +568,7 @@ def municipalities():
     v2 = ValOption("tot_pts_mun", "Total Points")
     v3 = ValOption("tot_cat_mun", "Total Categories")
     val_choices = [v1, v2, v3]
-    return render_template('chart.html', label_type=label_type, label_choices=label_choices, val_choices=val_choices)
+    return render_template('drop-down.html', label_type=label_type, label_choices=label_choices, val_choices=val_choices)
 
 # loads municipalities page with bar chart
 @app.route('/municipalities', methods=['POST'])
@@ -659,101 +683,6 @@ def handle_data_m():
             label_query+= ");"
             value_query+= ");"
             max_value=18
-        else:
-            list = labels
-            label = list.pop(0)
-            label_query="SELECT cname FROM " + val + " WHERE cname IN (\'" + label + "\'"
-            value_query="SELECT pt_tot_category FROM " + val + " WHERE cname IN (\'" + label + "\'"
-            title_='Invalid Selection, Check Inputs'
-            while list:
-                label = list.pop(0)
-                label_query+= ", \'" + label + "\'"
-                value_query+= ", \'" + label + "\'"
-                title_+= " and " + label
-            label_query+= ");"
-            value_query+= ");"
-            max_value=210
-    return page_template(label_type=label_type, label_choices=label_choices, val_choices=val_choices, label_query=label_query, value_query=value_query, title_=title_, max_value=max_value)
-
-# loads actions page without bar chart
-@app.route("/actions")
-def actions():
-    label_type = "Actions"
-    label_choices = []
-
-    # pulls each name out of corresponding relation
-    label_options = connect("SELECT aname FROM Actions")
-    for label_option in label_options:
-        new_label_option = convertTuple(label_option)
-        label_choices.append(new_label_option)
-
-    # sets value options for drop down
-    v1 = ValOption("pt_tot_act", "Total Points")
-    val_choices = [v1]
-    return render_template('chart.html', label_type=label_type, label_choices=label_choices, val_choices=val_choices)
-
-# loads actions page with bar chart
-@app.route('/actions', methods=['POST'])
-def handle_data_a():
-    label_type = "Actions"
-    label_choices = []
-
-    # pulls each name out of corresponding relation
-    label_options = connect("SELECT aname FROM Actions")
-    for label_option in label_options:
-        new_label_option = convertTuple(label_option)
-        label_choices.append(new_label_option)
-
-    # sets value options for drop down
-    v1 = ValOption("pt_tot_act", "Total Points")
-    val_choices = [v1]
-
-    # gets drop down selection from form
-    labels = request.form.getlist('label')
-    val = request.form.get('val')
-
-    # if no selection has been made, selects all
-    if len(labels) == 0:
-        if val == "pt_tot_act":
-            label_query='SELECT aname FROM ' + val
-            value_query='SELECT total_points FROM ' + val
-            title_='Total Points per Action'
-            max_value=30
-        else:
-            label_query='SELECT cname FROM pt_tot_category'
-            value_query='SELECT total_points FROM pt_tot_category'
-            title_='Invalid Selection, Check Inputs'
-            max_value=210
-
-    # if one selection has been made, select just that one
-    elif len(labels) == 1:
-        if val == "pt_tot_act":
-            label_query="SELECT aname FROM " + val + " WHERE aname=\'" + labels[0] + "\'"
-            value_query='SELECT total_points FROM ' + val + " WHERE aname=\'" + labels[0] + "\'"
-            title_='Total Points in ' + labels[0]
-            max_value=30
-        else:
-            label_query='SELECT cname FROM pt_tot_category'
-            value_query='SELECT total_points FROM pt_tot_category'
-            title_='Invalid Selection, Check Inputs'
-            max_value=210
-
-    # if more than one selection has been made, selects all that have been chosen
-    else:
-        if val == "pt_tot_act":
-            list = labels
-            label = list.pop(0)
-            label_query="SELECT aname FROM " + val + " WHERE aname IN (\'" + label + "\'"
-            value_query="SELECT total_points FROM " + val + " WHERE aname IN (\'" + label + "\'"
-            title_='Total Points in ' + label
-            while list:
-                label = list.pop(0)
-                label_query+= ", \'" + label + "\'"
-                value_query+= ", \'" + label + "\'"
-                title_+= " and " + label
-            label_query+= ");"
-            value_query+= ");"
-            max_value=30
         else:
             list = labels
             label = list.pop(0)

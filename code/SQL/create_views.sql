@@ -12,12 +12,14 @@ ON A.Ccode = C.Ccode
 GROUP BY C.CCode
 ORDER BY C.Cname;
 
-/*Shows the total points for each action*/
-CREATE VIEW pt_tot_act AS
-SELECT Aname, SUM(Point_Value) as Total_Points
-FROM Actions
-GROUP BY Aname
-ORDER BY Aname;
+/*Shows the total actions under each category.*/
+CREATE VIEW tot_act_cat AS
+SELECT C.Cname, COUNT(A.Acode) as Count_Action
+FROM Actions AS A
+JOIN Categories AS C
+ON C.Ccode = A.Ccode
+GROUP BY C.Ccode
+ORDER BY C.Cname;
 
 /*Shows the total actions each municipality did*/
 CREATE VIEW tot_act_mun AS
@@ -57,7 +59,7 @@ ORDER BY C.CTYname;
 /*Shows the total points each county received*/
 CREATE VIEW tot_pts_cty AS
 SELECT cy.CTYname, SUM(cert.Total_Points) AS Total_Points
-FROM Certification AS cert JOIN Municipalities AS mun 
+FROM Certification AS cert JOIN Municipalities AS mun
 ON cert.Mcode = mun.Mcode JOIN Counties as cy
 ON cy.CTYcode = mun.CTYcode
 GROUP BY mun.CTYcode, cy.CTYname
@@ -79,7 +81,7 @@ ORDER BY CY.CTYname;
 /*Shows the number of bronze stars per county*/
 CREATE VIEW bronze_stars_cty AS
 SELECT CY.CTYname, COUNT(C.Bronze_Silver) AS Total_Bronze
-FROM Certification AS C 
+FROM Certification AS C
 JOIN Municipalities AS M
 ON M.Mcode = C.Mcode
 JOIN Counties AS CY
@@ -91,9 +93,9 @@ ORDER BY CY.CTYname;
 /*Shows count silver stars per county.*/
 CREATE VIEW silver_stars_cty AS
 SELECT CY.CTYname, COUNT(
-	CASE C.Bronze_Silver WHEN 'Silver' 
+	CASE C.Bronze_Silver WHEN 'Silver'
 	THEN 1 ELSE NULL END) AS Total_Silver
-FROM Certification AS C 
+FROM Certification AS C
 JOIN Municipalities AS M
 ON M.Mcode = C.Mcode
 JOIN Counties AS CY
@@ -113,7 +115,7 @@ ORDER BY Cname;
 /*Shows the number of priority actions per category*/
 CREATE VIEW yes_priority_cat AS
 SELECT C.Cname, COUNT(
-	CASE WHEN A.Priority IS True 
+	CASE WHEN A.Priority IS True
 	THEN 1 ELSE NULL END) AS Total_Priority_Actions
 FROM Actions AS A JOIN Categories AS C
 ON C.Ccode = A.Ccode
@@ -132,39 +134,9 @@ ORDER BY Cname;
 /*Shows the number of required actions per category*/
 CREATE VIEW yes_required_cat AS
 SELECT C.Cname, COUNT(
-	CASE WHEN A.Required IS True 
+	CASE WHEN A.Required IS True
 	THEN 1 ELSE NULL END) AS Total_Required_Actions
 FROM Actions AS A JOIN Categories AS C
 ON C.Ccode = A.Ccode
 GROUP BY Cname
 ORDER BY Cname;
-
-/*CUT VIEWS*/
-
-/*
-CREATE VIEW not_completed_actions AS
-SELECT A.Acode, A.Aname
-FROM Actions AS A LEFT JOIN Complete_Actions AS CA
-ON A.Acode = CA.Acode;
-
-CREATE VIEW small_pt_act AS
-SELECT Acode, Aname, Point_Value
-FROM Actions
-WHERE Point_Value <= 10;
-
-CREATE VIEW large_pt_act AS
-SELECT Acode, Aname, Point_Value
-FROM Actions
-WHERE Point_Value > 10;
-
-CREATE VIEW no_gold_stars AS
-SELECT Mcode, Num_Gold_Stars
-FROM Certification
-WHERE Num_Gold_Stars = 0;
-
-CREATE VIEW many_gold_stars AS
-SELECT Mcode, Num_Gold_Stars
-FROM Certification
-WHERE Num_Gold_Stars >= 1;
-*/
-
