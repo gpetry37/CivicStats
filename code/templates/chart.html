@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<div class="drop-downs">
-  <h3>{{ label_type }}</h3>
+<div style="position:relative; left:30px; top: 20px;" class="drop-downs">
+  <h3 style="color:white;">{{ label_type }}</h3>
   <form action="{{ label_type.lower() }}" method="post">
     <select id="label" name="label" multiple>
       {% for label_choice in label_choices %}
@@ -10,19 +10,25 @@
         <option value="{{ label_choice }}">{{ label_choice }}</option>
       {% endfor %}
     </select>
+    <div style="position: relative; left: 0px; top:10px;">
     <select id="val" name="val">
       {% for val_choice in val_choices %}
         <option value="{{ val_choice.view }}">{{ val_choice.title }}</option>
       {% endfor %}
     </select>
     <input type="submit">
+    </div>
   </form>
 </div>
+&nbsp
   <center>
-    <h1>{{ title }}</h1>
+    &nbsp
+    <h1 style="color:white;margin: 5px;">{{ title }}</h1>
   </center>
   <center>
-    <canvas id="chart" width="600" height="400"></canvas>
+    &nbsp
+    <div style="background:rgba(255,255,255,0.9); margin-left:220px; margin-right: 220px;"><canvas id="chart" width="600" height="400"></canvas>
+    </div>
     <script>
       // bar chart data
       var barData = {
@@ -63,8 +69,6 @@
        scaleShowLabels: true
        }
      );
-
     </script>
   </center>
-
 {% endblock content %}

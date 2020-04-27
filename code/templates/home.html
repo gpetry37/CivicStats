@@ -1,5 +1,44 @@
 {% extends "layout.html" %}
 {% block content %}
-  <h4>About the project</h4>
-  <p>example text</p>
+<div class="home-div">
+<h4><u>What is CivicStats?</u></h4> &nbsp
+  <p class="home-p">Welcome to CivicStats! This is an extension of the CivicStory website that allows you,
+  the user, to visualize sustainability data in the New Jersey area. This data is collected from
+  the Sustainable Jersey website and is stored in a separate database that is connected to this
+   page. This tool gives the option to filter through Counties, Municipalities, Sustainability
+   Categories and Actions that fall under these categories. It is our hope that this tool will
+   help people become more aware of how sustainability affects their area and the steps that
+   different parts of New Jersey are taking. Below are the instructions on how to pull that data
+   you desire. We hope you enjoy!</p> &nbsp
+   <h4><u>How Does it Work?</u></h4> &nbsp
+  <p class="home-p">CivicStats generates a bar chart that displays data based on the options you pick. This chart
+      allows you to hover over the bars to get more information about each entry. To begin, pick 1
+      of the 3 options (Categories, Counties, Municipalities) that will display data on the
+      X axis of the bar chart. You may then select 1 or many specific entries from the resulting list
+      if you want to only look at specific entries. If you want to look at each entry in the list, do
+      not select anything from the list. Based on the X axis value you choose, you can then go onto
+      select the values you want to see on the Y axis in the drop down menu. Click “Submit Query”
+      when you are ready to display your chart! Clicking on the title “CivicStats” will bring you
+      back to the home page.</p> &nbsp
+  <p class="home-p">Note: Not every municipality entry will result in data because at the
+      moment not all of them have data stored in the database.</p> &nbsp
+  <h4><u>Categories</u></h4> &nbsp
+ <p class="home-p">The Categories option lets the user go through data regarding the 18 categories that
+    Sustainable Jersey outlines. These 18 categories are given in a list and will be shown on the
+    X axis of the bar chart. You can then pick 1 of 5 values that will be displayed on the Y axis
+    of the chart. These options let the user see the total number of points that could be earned
+    by participating in each category and clarifies which actions are required, a priority, or neither!</p> &nbsp
+    <h4><u>Counties</u></h4> &nbsp
+    <p class="home-p">The Counties option lets the user analyze data about the 21 counties in New Jersey. The 21
+      counties are given in a list and will represent the X axis of the bar chart. There are 5 options
+      in the drop down menu that can be chosen to display data on the Y axis. These options include
+      total actions, total points, total categories, total bronze stars and total silver stars per
+      county.</p> &nbsp
+    <h4><u>Municipalities</u></h4> &nbsp
+    <p class="home-p">The Municipalities option allows the user to display data involving 61 municipalities. Please
+       note that there are more municipalities on the Sustainable Jersey site, but we only stored the
+       data of 61 in the connecting database. The municipalities will represent the X axis of the bar
+       chart. There are 3 options to choose from in the drop down menu to print data on the Y axis.
+       These options include the total points, total actions and total categories per municipality. </p>
+</div>
 {% endblock content %}
