@@ -1,16 +1,16 @@
 # To run this program in the CSC 315 VM you first need to make the following one-time configuration changes:
 ## install psycopg2 python package
-sudo apt-get update
+sudo apt-get update  
 sudo apt-get install postgres-psycopg2
 ## The above commands may not work. Try running these instead:
-sudo apt-get install python3 libpq-dev python-dev python3-dev
+sudo apt-get install python3 libpq-dev python-dev python3-dev  
 pip install psycopg2
 # set the postgreSQL password for user 'osc'
-sudo -u postgres psql
-...ALTER USER osc PASSWORD 'osc';
+sudo -u postgres psql  
+...ALTER USER osc PASSWORD 'osc';  
 ...\q
 ## install flask
-sudo apt-get install python-pip
+sudo apt-get install python-pip  
 pip install flask
 ## logout, then login again to inherit new shell environment
 ## initialize database
@@ -20,7 +20,7 @@ pip install flask
 # Group 4 - CivicStats
 # Gordon Petry, Jason Kantner, Michael Williams, Casey Lishko
 ### Usage Debug Mode Off:
-export FLASK_APP=app.py
+export FLASK_APP=app.py  
 flask run
 #### then browse to http://127.0.0.1:5000/
 ### Usage Debug Mode On:
