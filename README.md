@@ -1,19 +1,19 @@
-# To run this program in the CSC 315 VM you first need to make the following one-time configuration changes:
-## install psycopg2 python package
+## To run this program in the CSC 315 VM you first need to make the following one-time configuration changes:
+### Install psycopg2 python package
 sudo apt-get update  
 sudo apt-get install postgres-psycopg2
-## The above commands may not work. Try running these instead:
+### The above commands may not work. Try running these instead:
 sudo apt-get install python3 libpq-dev python-dev python3-dev  
 pip install psycopg2
-# set the postgreSQL password for user 'osc'
+### Set the postgreSQL password for user 'osc'
 sudo -u postgres psql  
 ...ALTER USER osc PASSWORD 'osc';  
 ...\q
-## install flask
+### Install flask
 sudo apt-get install python-pip  
 pip install flask
-## logout, then login again to inherit new shell environment
-## initialize database
+### Logout, then login again to inherit new shell environment
+### Initialize database
 . initialize_db.txt
 
 # CSC 315 Project
