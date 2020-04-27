@@ -32,6 +32,8 @@ a bar graph.
 
 #### Logout, then login again to inherit new shell environment
 
+### Usage:
+
 #### Usage Debug Mode Off:
 `export FLASK_APP=app.py`  
 `flask run`
