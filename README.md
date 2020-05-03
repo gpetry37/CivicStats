@@ -2,16 +2,16 @@
 #### Gordon Petry, Jason Kantner, Michael Williams, Casey Lishko
 
 ### Purpose:
-Utilizing data pulled from sustainablejersey.com, this
+Utilizing data pulled from [Sustainable Jersey](https://www.sustainablejersey.com/), this
 program will allow to user to look at data between different
 counties, municipalities, counties and actions plotted on
 a bar graph.
 
-### To run this program in the CSC 315 VM you first need to make the following one-time configuration changes:
+### To run this program in a version 18.04 Ubuntu system you first need to make the following one-time configuration changes:
 
 #### Install Psycopg2 Python Package
 `sudo apt-get update`  
-`sudo apt-get install postgres-psycopg2`
+`sudo apt-get install python-psycopg2`
 
 #### The above commands may not work. Try running these instead:
 `sudo apt-get install python3 libpq-dev python-dev python3-dev`  
